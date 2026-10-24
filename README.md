@@ -1,16 +1,65 @@
-# React + Vite
+# AlphaGrid Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web interface for **AlphaGrid**, a stock-market dashboard. Users can keep a watchlist with live prices, open detailed stock pages with charts and AI-generated briefings, and see the week's market-moving events at a glance. The interface is in Macedonian.
 
-Currently, two official plugins are available:
+This app needs the **alphagrid-backend** API to run.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- **Login and registration** with JWT sessions (the token is stored in `localStorage`; an expired session redirects to the login page).
+- **Dashboard:** a personalised greeting, the user's watchlist (price, daily change, volume, logo; refreshed every 15 seconds) and the "events this week" panel.
+- **Watchlist management:** add tickers through the input or suggested tickers, remove them, or click a row to open the stock page.
+- **Weekly events:** FOMC rate decisions, CPI, employment and GDP releases, and earnings reports for watchlist stocks. Past events are dimmed and each event expands for details.
+- **Stock detail page:** price chart (1M, 3M, 6M, 1Y), market data, next earnings report, an AI briefing and a chat for follow-up questions.
+- **Search:** debounced ticker and company search in the header.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the ESLint configuration
+React 19, Vite, Tailwind CSS 4, React Router, Axios, Recharts, Lucide icons.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting started
+
+### Prerequisites
+
+- Node.js 20.19 or newer (required by Vite)
+- The backend running at `http://127.0.0.1:8000` (see the **alphagrid-backend** README)
+
+### Install and run
+
+```bash
+git clone <repo-url>
+cd alphagrid-frontend
+npm install
+npm run dev
+```
+
+Open the address Vite prints, usually http://localhost:5173. Register an account and log in.
+
+### Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the dev server with hot reload |
+| `npm run build` | Production build into `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Run ESLint |
+
+## Configuration
+
+The API address is set in `src/api.js` (`API_BASE`, currently `http://127.0.0.1:8000`). Change it there if the backend runs elsewhere.
+
+## Project structure
+
+```
+src/
+  main.jsx, App.jsx     entry point and routes (/login, /, /stock/:ticker)
+  api.js                Axios client and all API calls
+  context/              AuthContext (user session)
+  pages/                Login, Dashboard, StockDetail
+  components/           Header, WatchlistTable, CalendarPanel, WelcomeBanner, Skeleton
+  utils/format.js       price, percentage and volume formatting
+```
+
+## Disclaimer
+
+AlphaGrid is a learning project. Market data and AI-generated text are informational only and are not financial advice.
