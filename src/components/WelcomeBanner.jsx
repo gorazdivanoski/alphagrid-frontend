@@ -1,3 +1,6 @@
+// Welcome banner component displaying a personalized greeting,
+// including the user's name and profile initial.
+
 export default function WelcomeBanner({ user }) {
   const initial = user?.full_name?.charAt(0)?.toUpperCase() || '?';
 

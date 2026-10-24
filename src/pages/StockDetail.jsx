@@ -6,6 +6,9 @@ import { formatPrice, formatPercent, formatVolume } from '../utils/format';
 import { Send } from 'lucide-react';
 import { getStock, getStockHistory, getStockEarnings, getAISummary, askAIFollowup } from '../api';
 
+// Stock details page displaying price charts, market data, and earnings reports,
+// including AI-powered stock analysis and interactive follow-up questions.
+
 const PERIODS = [
   { label: '1М', value: '1mo' },
   { label: '3М', value: '3mo' },
@@ -212,7 +215,7 @@ export default function StockDetail() {
                     <input
                       value={chatInput}
                       onChange={(e) => setChatInput(e.target.value)}
-                      placeholder="Прашај нешто за оваа акција…"
+                      placeholder="Постави прашање за оваа акција…"
                       className="flex-1 bg-graphite border border-panelBorder rounded-full px-4 py-2 text-sm outline-none focus:border-accent transition-colors"
                     />
                     <button

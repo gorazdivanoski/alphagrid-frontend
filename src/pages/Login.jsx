@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
+// Authentication page for user login and registration,
+// including form validation, error handling, and navigation.
+
 export default function Login() {
   const [isRegister, setIsRegister] = useState(false);
   const [email, setEmail] = useState('');
@@ -24,7 +27,7 @@ export default function Login() {
       }
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.detail || 'Нешто тргна наопаку. Пробај повторно.');
+      setError(err.response?.data?.detail || 'Грешка при вчитување. Обиди се повторно.');
     } finally {
       setLoading(false);
     }
@@ -35,7 +38,7 @@ export default function Login() {
       <div className="auth-card">
         <h1 className="auth-title">A-Grid</h1>
         <p className="auth-subtitle">
-          {isRegister ? 'Отвори сметка' : 'Најави се на твојата сметка'}
+          {isRegister ? 'Креирај профил' : 'Најави се на твојот профил'}
         </p>
 
         <form onSubmit={handleSubmit} className="auth-form">
@@ -57,12 +60,12 @@ export default function Login() {
           {error && <p className="auth-error">{error}</p>}
 
           <button type="submit" disabled={loading}>
-            {loading ? 'Се вчитува…' : isRegister ? 'Отвори сметка' : 'Најави се'}
+            {loading ? 'Се вчитува…' : isRegister ? 'Креирај профил' : 'Најави се'}
           </button>
         </form>
 
         <button className="auth-toggle" onClick={() => setIsRegister(!isRegister)}>
-          {isRegister ? 'Веќе имаш сметка? Најави се' : 'Немаш сметка? Регистрирај се'}
+          {isRegister ? 'Имате профил? Најави се' : 'Немате профил? Регистрирај се'}
         </button>
       </div>
     </div>

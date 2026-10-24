@@ -5,6 +5,9 @@ import Header from '../components/Header';
 import CalendarPanel from '../components/CalendarPanel';
 import WatchlistTable from '../components/WatchlistTable';
 
+// Main dashboard displaying the user's watchlist and weekly financial events,
+// including live stock price updates and watchlist management.
+
 export default function Dashboard() {
   const { user } = useAuth();
   const [watchlist, setWatchlist] = useState([]);
@@ -38,7 +41,7 @@ export default function Dashboard() {
     loadWatchlist();
     loadEvents();
 
-    // Live освежување на цените на секои 15 секунди (се совпаѓа со backend cache TTL)
+    // Refresh stock prices every 15 seconds to match the backend cache TTL.
     const interval = setInterval(loadWatchlist, 15000);
     return () => clearInterval(interval);
   }, [loadWatchlist, loadEvents]);

@@ -4,6 +4,9 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import StockDetail from './pages/StockDetail';
 
+// Main React application defining public and protected routes,
+// including authentication checks, dashboard, and stock detail navigation.
+
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
   if (loading) return <div className="screen-loading">Се вчитува…</div>;

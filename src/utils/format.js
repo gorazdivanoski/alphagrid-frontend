@@ -1,3 +1,6 @@
+// Utility functions for formatting stock prices, percentage changes,
+// and trading volumes into readable financial values.
+
 export function formatPrice(value) {
   if (value === null || value === undefined) return '—';
   return `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;

@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Landmark, TrendingUp } from 'lucide-react';
 import Skeleton from './Skeleton';
 
+// React component for displaying weekly macroeconomic and earnings events,
+// including loading states, event details, and visual indicators for past events.
+
 export default function CalendarPanel({ events, loading }) {
   const [expandedIdx, setExpandedIdx] = useState(null);
 

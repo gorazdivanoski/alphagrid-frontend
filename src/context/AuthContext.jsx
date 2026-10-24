@@ -1,6 +1,9 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { loginUser, registerUser, getCurrentUser } from '../api';
 
+// React authentication context for managing user sessions,
+// including login, registration, logout, and JWT token persistence.
+
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {

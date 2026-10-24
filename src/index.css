@@ -1,6 +1,8 @@
-@config "../tailwind.config.js";
-@import "tailwindcss";
+/* Global styles for the AlphaGrid application,
+   including Tailwind CSS, authentication screens, animations,
+   dark theme styling, and custom scrollbars. */
 
+@config "../tailwind.config.js";
 @import "tailwindcss";
 
 * {

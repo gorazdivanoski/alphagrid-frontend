@@ -4,6 +4,10 @@ import { Star, X, Plus, Sparkles } from 'lucide-react';
 import { formatPrice, formatPercent, formatVolume } from '../utils/format';
 import Skeleton from './Skeleton';
 
+// React component for managing and displaying a user's stock watchlist,
+// including live market data, stock navigation, adding and removing stocks,
+// suggested tickers, and loading and empty states.
+
 const SUGGESTED_TICKERS = [
   { ticker: 'AAPL', name: 'Apple Inc' },
   { ticker: 'NVDA', name: 'Nvidia' },

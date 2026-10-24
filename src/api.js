@@ -1,3 +1,7 @@
+// Axios API service for handling authentication, watchlist, stock data,
+// AI analysis, and calendar requests, including JWT token management
+// and automatic handling of unauthorized responses.
+
 import axios from 'axios';
 
 const API_BASE = 'http://127.0.0.1:8000';

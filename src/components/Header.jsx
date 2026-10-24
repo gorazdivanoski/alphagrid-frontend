@@ -4,6 +4,9 @@ import { Search, LogOut, ChevronDown } from 'lucide-react';
 import { searchStocks } from '../api';
 import { useAuth } from '../context/AuthContext';
 
+// Header component with debounced stock search and ticker selection,
+// user profile dropdown, account information, and logout functionality.
+
 export default function Header({ onSelectTicker }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
