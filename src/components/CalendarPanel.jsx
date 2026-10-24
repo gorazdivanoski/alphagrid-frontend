@@ -35,12 +35,15 @@ export default function CalendarPanel({ events, loading }) {
           {events.map((event, idx) => {
             const isOpen = expandedIdx === idx;
             const isEarnings = event.source === 'earnings';
+            const isPast = Boolean(event.is_past);
 
             return (
               <button
-                key={idx}
+                key={`${event.date_iso}-${event.title}`}
                 onClick={() => setExpandedIdx(isOpen ? null : idx)}
                 className={`text-left rounded-lg border-l-[3px] px-4 py-3 transition-all ${
+                  isPast ? 'opacity-50 hover:opacity-80' : ''
+                } ${
                   isEarnings
                     ? 'border-l-positive bg-positive/[0.07] hover:bg-positive/[0.12]'
                     : 'border-l-accent bg-accent/[0.07] hover:bg-accent/[0.12]'
@@ -56,9 +59,9 @@ export default function CalendarPanel({ events, loading }) {
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="font-medium text-sm truncate">{event.title}</p>
-                      <span className="font-mono text-xs text-muted shrink-0">{event.date}</span>
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="font-medium text-sm break-words min-w-0">{event.title}</p>
+                      <span className="font-mono text-xs text-muted shrink-0 mt-0.5">{event.date}</span>
                     </div>
                     <p className="text-muted text-xs mt-0.5">{event.description}</p>
                     {isOpen && event.details && (

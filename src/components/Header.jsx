@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Settings, LogOut, ChevronDown } from 'lucide-react';
+import { Search, LogOut, ChevronDown } from 'lucide-react';
 import { searchStocks } from '../api';
 import { useAuth } from '../context/AuthContext';
 
@@ -105,10 +105,6 @@ export default function Header({ onSelectTicker }) {
       </div>
 
       <div className="flex items-center gap-3">
-        <button className="text-muted hover:text-white transition-colors">
-          <Settings className="w-5 h-5" />
-        </button>
-
         <div className="relative" ref={profileRef}>
           <button
             onClick={() => setProfileOpen(!profileOpen)}
